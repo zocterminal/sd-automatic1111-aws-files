@@ -35,5 +35,6 @@ rm Python-$VERS.tgz
 
 # make our python the python3 for this account
 ln -s ~/Python-$VERS/python ~/bin/python3
-echo "This should now say Python $VERS --> " `python3 --version`
+echo "The line below should now say Python '$VERS':"
+python3 --version
 
