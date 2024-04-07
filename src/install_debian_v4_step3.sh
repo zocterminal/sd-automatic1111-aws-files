@@ -7,7 +7,7 @@
 #
 # check for local bin in the path
 #
-PAT="^\/ome\/$USER\/bin:"
+PAT="^\/home\/$USER\/bin:"
 
 if [[ ! $PATH =~ $PAT ]]; then
     echo "/home/$USER/bin missing from path...";
