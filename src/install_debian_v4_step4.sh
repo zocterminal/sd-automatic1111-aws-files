@@ -11,23 +11,26 @@ mkdir ~/downloads
 
 cat <<EOF >~/run.sh
 #!/bin/bash
-./webui.sh --listen
-EOF
-cat <<EOF >~/get-civitai-link.sh
-#!/bin/bash
+
+URL=$1
+URLPURE="${URL%%\?*}"
+
 
 # your own civitai AI-token
-CTOK=00be61abcfc1ddb1a55e4c0000000000
+CTOK=123456789abcdef999999
 
 cd ~/downloads
-echo wget \$1 --content-disposition
-if [[ \$1 == *"?"* ]]; then
-    wget \$1&token=\$CTOK --content-disposition
+echo wget $URLPURE --content-disposition
+if [[ $URLPURE == *"?"* ]]; then
+    wget $URLPURE&token=$CTOK --content-disposition
 else
-    wget \$1?token=\$CTOK --content-disposition
+    wget $URLPURE?token=$CTOK --content-disposition
 fi
+
 pwd
 ls -l
+
+echo 'Now move these files from ~/downloads to the corresponding ~/stable-diffusion/models folder'
 EOF
 
 cat <<EOF >~/get-essentials.sh
